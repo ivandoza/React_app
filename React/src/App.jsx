@@ -1,3 +1,4 @@
+import React from "react";
 import { Hello } from "./Hello";
 import { Welcome } from "./Welcome";
 import { AlertClock } from "./AlertClock";
@@ -8,6 +9,7 @@ import { InteractiveWelcome } from "./InteractiveWelcome";
 import { Login } from "./Login";
 import { UncontrolledLogin } from "./UncontrolledLogin";
 import { FocuseableInput } from "./FocuseableInput";
+import { Ref } from "./Ref"
 
 function handleShowTime() {
   const now = new Date();
@@ -32,6 +34,9 @@ export function App() {
       <Login onLogin={printLoginData} />
       <UncontrolledLogin />
       <FocuseableInput />
+      <React.StrictMode>
+        <Ref />
+      </React.StrictMode>
     </div>
   );
 }

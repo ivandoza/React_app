@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { CounterDisplay } from "./CounterDisplay";
 
 export function Counter({ initial, amount }) {
@@ -22,9 +22,14 @@ export function Counter({ initial, amount }) {
     console.log(`Current value of the counter: ${counter}`);
   }, [counter]);
 
+  let ref = useRef(initial);
+
+  if (ref.current + amount) {console.log("UP")}
+    else if (ref.current - amount) {console.log("Down")}
+
   return (
     <div>
-      <CounterDisplay countNum={counter} />
+      <CounterDisplay ref={ref} countNum={counter} />
       <button onClick={handleCounterIncrement}>Increment</button>
       <button onClick={handleCounterDecrement}>Decrement</button>
       <button onClick={handleCounterReset}>Reset</button>
