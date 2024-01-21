@@ -1,4 +1,4 @@
-import { Welcome } from "./Welcome";
+import { Welcome } from "../Welcome/Welcome";
 import { useState } from "react";
 
 export function InteractiveWelcome() {

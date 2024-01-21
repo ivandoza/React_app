@@ -1,15 +1,15 @@
 import React from "react";
-import { Hello } from "./Hello";
-import { Welcome } from "./Welcome";
-import { AlertClock } from "./AlertClock";
-import { Counter } from "./Counter";
-import { Clock } from "./Clock";
-import { MouseClicker } from "./MouseClicker";
-import { InteractiveWelcome } from "./InteractiveWelcome";
-import { Login } from "./Login";
-import { UncontrolledLogin } from "./UncontrolledLogin";
-import { FocuseableInput } from "./FocuseableInput";
-import { Ref } from "./Ref"
+import { Hello } from "./Components/Hello/Hello";
+import { Welcome } from "./Components/Welcome/Welcome";
+import { AlertClock } from "./Components/AlertClock/AlertClock";
+import { Counter } from "./Components/Counter/Counter";
+import { Clock } from "./Components/Clock/Clock";
+import { MouseClicker } from "./Components/MouseClicker/MouseClicker";
+import { InteractiveWelcome } from "./Components/InteractiveWelcome/InteractiveWelcome";
+import { Login } from "./Components/Login/Login";
+import { UncontrolledLogin } from "./Components/UncontrolledLogin/UncontrolledLogin";
+import { FocuseableInput } from "./Components/FocuseableInput/FocuseableInput";
+import { Ref } from "./Components/FocuseableInput/Ref"
 
 function handleShowTime() {
   const now = new Date();
