@@ -27,6 +27,9 @@ export function Counter({ initial, amount }) {
     console.log(ref.current);
   }, [counter]);
 
+  if (ref + amount) {console.log("UP")}
+    else {console.log("Down")}
+
   return (
     <div>
       <CounterDisplay countNum={counter} />

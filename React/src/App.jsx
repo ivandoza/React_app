@@ -9,14 +9,13 @@ import { InteractiveWelcome } from "./Components/InteractiveWelcome/InteractiveW
 import { Login } from "./Components/Login/Login";
 import { UncontrolledLogin } from "./Components/UncontrolledLogin/UncontrolledLogin";
 import { FocuseableInput } from "./Components/FocuseableInput/FocuseableInput";
-import { Ref } from "./Components/FocuseableInput/Ref"
+import { Ref } from "./Components/FocuseableInput/Ref";
+import { Colors } from "./Components/Colors/Colors";
 
 function handleShowTime() {
   const now = new Date();
-
   alert(`The current time is: ${now.toLocaleTimeString()}`);
 }
-
 function printLoginData(dat) {
   console.log("New Login:", dat);
 }
@@ -37,6 +36,12 @@ export function App() {
       <React.StrictMode>
         <Ref />
       </React.StrictMode>
+      <Colors colores={[
+          {id: 1, name: "Red"},
+          {id: 2, name: "Green"},
+          {id: 3, name: "Black"}
+        ]}
+      />
     </div>
   );
 }
