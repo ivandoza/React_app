@@ -11,6 +11,7 @@ import { UncontrolledLogin } from "./Components/UncontrolledLogin/UncontrolledLo
 import { FocuseableInput } from "./Components/FocuseableInput/FocuseableInput";
 import { Ref } from "./Components/FocuseableInput/Ref";
 import { Colors } from "./Components/Colors/Colors";
+import { TodoList } from "./Components/TodoList/TodoList";
 
 function handleShowTime() {
   const now = new Date();
@@ -42,6 +43,7 @@ export function App() {
           {id: 3, name: "Black"}
         ]}
       />
+      <TodoList />
     </div>
   );
 }

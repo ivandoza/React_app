@@ -4,10 +4,6 @@ import { CounterDisplay } from "../CounterDisplay/CounterDisplay";
 export function Counter({ initial, amount }) {
   const [counter, setCounter] = useState(initial);
 
-  if (counter < initial) {
-    setCounter(initial);
-  }
-
   function handleCounterIncrement() {
     setCounter((c) => c + amount);
     ref.current = "UP";
