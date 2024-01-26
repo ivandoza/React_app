@@ -2,7 +2,7 @@ import { Age } from "../Age/Age";
 
 export function Welcome({ name, age }) {
   return (
-    <div>
+    <div className="welcome">
       <p>
         Welcome, <strong>{name}</strong>!
       </p>

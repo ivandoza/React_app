@@ -23,7 +23,7 @@ function printLoginData(dat) {
 
 export function App() {
   return (
-    <div>
+    <div className="App">
       <Hello />
       <Welcome name="Ivan" age={25} />
       <AlertClock clickDate={handleShowTime} />
