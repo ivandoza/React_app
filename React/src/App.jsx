@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Hello } from "./Components/Hello/Hello";
 import { Welcome } from "./Components/Welcome/Welcome";
 import { AlertClock } from "./Components/AlertClock/AlertClock";
@@ -12,39 +12,63 @@ import { FocuseableInput } from "./Components/FocuseableInput/FocuseableInput";
 import { Ref } from "./Components/FocuseableInput/Ref";
 import { Colors } from "./Components/Colors/Colors";
 import { TodoList } from "./Components/TodoList/TodoList";
-
-function handleShowTime() {
-  const now = new Date();
-  alert(`The current time is: ${now.toLocaleTimeString()}`);
-}
-function printLoginData(dat) {
-  console.log("New Login:", dat);
-}
+import { Container } from "./Components/Container/Container";
+import { LanguageContext } from "./Components/LanguageContext/LanguageContext";
+import { GitHubUsers } from "./Components/GithubUsers/GithubUsers";
 
 export function App() {
+  function handleShowTime() {
+    const now = new Date();
+    alert(`The current time is: ${now.toLocaleTimeString()}`);
+  }
+  function printLoginData(dat) {
+    console.log("New Login:", dat);
+  }
+
+  const [language, setLanguage] = useState("en");
+
+  function handleSetLanguage(language) {
+    setLanguage(language);
+  }
+
   return (
-    <div className="App">
-      <Hello />
-      <Welcome name="Ivan" age={25} />
-      <AlertClock clickDate={handleShowTime} />
-      <Counter initial={0} amount={1} />
-      <Clock />
-      <MouseClicker />
-      <InteractiveWelcome />
-      <Login onLogin={printLoginData} />
-      <UncontrolledLogin />
+    <>
+      <Container title={<h1>This is my awesome app!</h1>}>
+        <Hello />
+        <Welcome name="Ivan" age={25} />
+        <AlertClock clickDate={handleShowTime} />
+        <Counter initial={0} amount={1} />
+          <LanguageContext.Provider value={language}>
+            <Clock>
+            <button
+              className="button-language" onClick={() => handleSetLanguage("en")}> EN
+            </button>
+            <button
+              className="button-language" onClick={() => handleSetLanguage("es")}> ES
+            </button>
+            </Clock>
+          </LanguageContext.Provider>
+        <MouseClicker />
+        <InteractiveWelcome />
+        <Login onLogin={printLoginData} />
+        <UncontrolledLogin />
+        {/* <React.StrictMode>
+          <Ref />
+        </React.StrictMode> */}
+        <Colors
+          colores={[
+            { id: 1, name: "Red" },
+            { id: 2, name: "Green" },
+            { id: 3, name: "Black" },
+            { id: 4, name: "Blue" },
+            { id: 5, name: "White" },
+          ]}
+        />
+        <TodoList />
+      <GitHubUsers />
+      </Container>
       <FocuseableInput />
-      <React.StrictMode>
-        <Ref />
-      </React.StrictMode>
-      <Colors colores={[
-          {id: 1, name: "Red"},
-          {id: 2, name: "Green"},
-          {id: 3, name: "Black"}
-        ]}
-      />
-      <TodoList />
-    </div>
+    </>
   );
 }
 
