@@ -22,88 +22,42 @@ import { HookControlledForm } from "./Components/Hooks/HookControlledForm";
 import { HookCurrentLocation } from "./Components/Hooks/HookCurrentLocation";
 import { Hooks } from "./Components/Hooks/Hooks";
 import { FilteredList } from "./Components/FilteredList/FilteredList";
+import { Route, Routes, Link } from "react-router-dom";
+import { GithubUserList } from "./Components/GithubUserList/GithubUserList";
+import { ShowGithubUser } from "./Components/ShowGithubUser/ShowGithubUser";
 
 export function App() {
-  function handleShowTime() {
-    const now = new Date();
-    alert(`The current time is: ${now.toLocaleTimeString()}`);
-  }
-  function printLoginData(dat) {
-    console.log("New Login:", dat);
-  }
-
-  const [language, setLanguage] = useState("en");
-
-  function handleSetLanguage(language) {
-    setLanguage(language);
-  }
-
   return (
     <>
-      <Container title={<h1>This is my awesome app!</h1>}>
-        <Hello />
-        <Welcome name="Ivan" age={25} />
-        <AlertClock clickDate={handleShowTime} />
-        <Counter initial={0} amount={1} />
-        <LanguageContext.Provider value={language}>
-          <Clock>
-            <button
-              className="button-language"
-              onClick={() => handleSetLanguage("en")}
-            >
-              {" "}
-              EN
-            </button>
-            <button
-              className="button-language"
-              onClick={() => handleSetLanguage("es")}
-            >
-              {" "}
-              ES
-            </button>
-          </Clock>
-        </LanguageContext.Provider>
-        <MouseClicker />
-        <InteractiveWelcome />
-        <Login onLogin={printLoginData} />
-        <UncontrolledLogin />
-        {/* <React.StrictMode>
-          <Ref />
-        </React.StrictMode> */}
-        <Colors
-          colores={[
-            { id: 1, name: "Red" },
-            { id: 2, name: "Green" },
-            { id: 3, name: "Black" },
-            { id: 4, name: "Blue" },
-            { id: 5, name: "White" },
-          ]}
+      <Link to="/">Home</Link> | <Link to="/counter">Counter</Link> |{" "}
+      <Link to="/users">Users</Link> |{" "}
+      <Link to="/users/ivandoza">My GitHub</Link>
+      <hr />
+      <Routes>
+        <Route path="/" element={<Welcome name="Iván" age={25} />} />
+        <Route path="/counter" element={<Counter initial={0} amount={1} />} />
+        <Route path="/users">
+          <Route
+            index
+            element={
+              <>
+                <h4>Select a user:</h4>
+                <GithubUserList />
+              </>
+            }
+          />
+          <Route path=":username" element={<ShowGithubUser />} />
+        </Route>
+        <Route
+          path="*"
+          element={
+            <div>
+              <p>Not found</p>
+              <Link to="/">Go Home</Link>
+            </div>
+          }
         />
-        <TodoList />
-        <GitHubUsers />
-        <Hooks title={<h2>Hooks</h2>}>
-          <HookGithubUser username="ivandoza" />
-          <HookCounter />
-          <HookControlledForm onLogin={printLoginData} />
-          <HookCurrentLocation />
-        </Hooks>
-        <FilteredList
-          people={[
-            { id: 1, name: "Ivan", age: 25 },
-            { id: 2, name: "Fran", age: 17 },
-            { id: 3, name: "Maria", age: 20 },
-            { id: 4, name: "Julio", age: 19 },
-          ]}
-        />
-      </Container>
-      <FocuseableInput />
+      </Routes>
     </>
   );
 }
-
-//Ej: Components-3:
-//Se puede usar el componente Hello más de una vez, se repetirá su contenido tantas veces.
-//Se puede renderizar el componente Message desde el componente App, con el mismo resultado.
-
-//Ej: Props-1:
-//Se puede establecer valores por defecto con defaultProps
