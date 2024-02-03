@@ -36,3 +36,7 @@ button:hover {
 .app-content-hidden {
     display: none;
 }
+
+.hooks {
+    border: 2px solid black;
+}

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 
 export function GithubUser({ username }) {
+
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  async function fetchGithubUser(username) {
+  async function getGithubUser(username) {
     try {
       setLoading(true);
       setError(null);
@@ -20,7 +21,7 @@ export function GithubUser({ username }) {
     }
   }
   useEffect(() => {
-    fetchGithubUser(username);
+    getGithubUser(username);
   }, [username]);
   return (
     <div>

@@ -1,14 +1,12 @@
 import { useState } from "react";
 
 export function useControlledForm() {
-
-    function createData() {
-        return {
-            username: '',
-            password:''
-        }
-    }
-
+  function createData() {
+    return {
+      username: "",
+      password: "",
+    };
+  }
 
   const [formData, setFormData] = useState(createData());
 
@@ -21,7 +19,7 @@ export function useControlledForm() {
   }
 
   return {
- formData,
- handleInputChange
+    formData,
+    handleInputChange,
   };
 }

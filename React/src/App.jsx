@@ -15,6 +15,13 @@ import { TodoList } from "./Components/TodoList/TodoList";
 import { Container } from "./Components/Container/Container";
 import { LanguageContext } from "./Components/LanguageContext/LanguageContext";
 import { GitHubUsers } from "./Components/GithubUsers/GithubUsers";
+import { GithubUser } from "./Components/GithubUser/GithubUser";
+import { HookGithubUser } from "./Components/Hooks/HookGithubUser";
+import { HookCounter } from "./Components/Hooks/HookCounter";
+import { HookControlledForm } from "./Components/Hooks/HookControlledForm";
+import { HookCurrentLocation } from "./Components/Hooks/HookCurrentLocation";
+import { Hooks } from "./Components/Hooks/Hooks";
+import { FilteredList } from "./Components/FilteredList/FilteredList";
 
 export function App() {
   function handleShowTime() {
@@ -38,16 +45,24 @@ export function App() {
         <Welcome name="Ivan" age={25} />
         <AlertClock clickDate={handleShowTime} />
         <Counter initial={0} amount={1} />
-          <LanguageContext.Provider value={language}>
-            <Clock>
+        <LanguageContext.Provider value={language}>
+          <Clock>
             <button
-              className="button-language" onClick={() => handleSetLanguage("en")}> EN
+              className="button-language"
+              onClick={() => handleSetLanguage("en")}
+            >
+              {" "}
+              EN
             </button>
             <button
-              className="button-language" onClick={() => handleSetLanguage("es")}> ES
+              className="button-language"
+              onClick={() => handleSetLanguage("es")}
+            >
+              {" "}
+              ES
             </button>
-            </Clock>
-          </LanguageContext.Provider>
+          </Clock>
+        </LanguageContext.Provider>
         <MouseClicker />
         <InteractiveWelcome />
         <Login onLogin={printLoginData} />
@@ -65,7 +80,21 @@ export function App() {
           ]}
         />
         <TodoList />
-      <GitHubUsers />
+        <GitHubUsers />
+        <Hooks title={<h2>Hooks</h2>}>
+          <HookGithubUser username="ivandoza" />
+          <HookCounter />
+          <HookControlledForm onLogin={printLoginData} />
+          <HookCurrentLocation />
+        </Hooks>
+        <FilteredList
+          people={[
+            { id: 1, name: "Ivan", age: 25 },
+            { id: 2, name: "Fran", age: 17 },
+            { id: 3, name: "Maria", age: 20 },
+            { id: 4, name: "Julio", age: 19 },
+          ]}
+        />
       </Container>
       <FocuseableInput />
     </>
