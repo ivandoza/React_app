@@ -1,28 +1,9 @@
-import { useEffect, useState } from "react";
+import { useGithubUser } from "../CustomHooks/useGithubUser";
 
 export function GithubUser({ username }) {
 
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const { data, loading, error } = useGithubUser(username);
 
-  async function getGithubUser(username) {
-    try {
-      setLoading(true);
-      setError(null);
-      const user = await fetch(`https://api.github.com/users/${username}`);
-      const response = await user.json();
-      setData(response)
-    } catch (error) {
-      setError(error);
-      setData(null);
-    } finally {
-      setLoading(false);
-    }
-  }
-  useEffect(() => {
-    getGithubUser(username);
-  }, [username]);
   return (
     <div>
       {loading && <h4>Loading...</h4>}
